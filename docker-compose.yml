@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    image: "library-service:latest"
+    ports:
+     - "3500:3500"
+    environment:
+     - "MONGO_HOST=192.168.1.5"
+     - "MONGO_PORT=27017"     
+    depends_on:
+     - mongo
+    volumes:
+     - ~/Desktop/testdata:/dist/testdata 
+  mongo:
+    image: "mongo:latest"
+    ports: 
+       - "27017:27017"
+    volumes:
+       - ~/mongodata:/data/db
